@@ -8,6 +8,7 @@
 
     </head>
     <body>
-        <h1>Bem-vindo ao CRUD!</h1>
+        <h1>Bem-vindo ao CRUD!</h1><br>
+        <a href="{{ route('create.user') }}">Cadastrar</a>
     </body>
 </html>
