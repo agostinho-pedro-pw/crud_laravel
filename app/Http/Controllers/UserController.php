@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
@@ -14,23 +15,25 @@ class UserController extends Controller
     {
     return dd('Formulairo');
     } */
-    public function create(){   
-        return view ('users.create');
-    }  
+    public function create()
+    {
+        return view('users.create');
+    }
     /*logica para o post de formulário a DB*/
-    public function store(Request $request){
+    public function store(UserRequest $request)
+    {
         /*tratamento de excepcções no php*/
-        try{  
-        //dd($request);
-            User::create([ 
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'password'=>$request->password,
-                'description'=>$request->description
+        try {
+            //dd($request);
+            //usar para cadastrar no banco de dados na tabela users
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'description' => $request->description
             ]);
             return redirect()->route('create.user')->with('sucess', 'usuario cadastrado com   sucesso!');
-        
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return back()->withInput()->with('error', 'usuario não cadastrado!');
         }
     }

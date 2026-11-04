@@ -18,7 +18,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    
+    /* Estamos a indicar que estes campos podem ser preenchidos em massa, ou seja, ao criar um utilizador, estes campos podem receber dados do formulário. */
     protected $fillable = [
         'name',
         'email',
