@@ -26,8 +26,8 @@ class UserRequest extends FormRequest
             //definindo os campos required
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5',
-            'description' => 'required|min:10|max:1000',
+            'password' => 'required|min:2',
+            'description' => 'required|min:2|max:1000',
         ];
     }
 

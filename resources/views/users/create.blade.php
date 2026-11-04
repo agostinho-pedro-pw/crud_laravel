@@ -35,6 +35,9 @@
         {{ $error }} </p>
     @endforeach
     @endif
+    <ul>
+        <a href="{{ route('index.user') }}">_listar_</a>
+    </ul><br>
     <form action="{{ route('store.user') }}" method="POST">
         @csrf {{--token de segurança, para evitar dados indesejados no nosso codigo--}}
         <label for="name">Nome: </label>
@@ -53,6 +56,8 @@
 
         <input type="textarea" name="description" id="description " placeholder="Insira uma descrição"
             value="{{ old('description') }}"><br><br>
+        <button type="submit">Enviar</button>
+
     </form>
 
 </body>

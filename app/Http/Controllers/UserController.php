@@ -37,4 +37,11 @@ class UserController extends Controller
             return back()->withInput()->with('error', 'usuario não cadastrado!');
         }
     }
+    /*Listar os usuários*/
+    public function index()
+    {
+        //recuperar os registros do banco de dados
+        $users = User::orderByDesc('id')->paginate(20);
+        return view('users.index', ['users' => $users]);
+    }
 }
