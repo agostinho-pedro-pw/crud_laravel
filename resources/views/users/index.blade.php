@@ -6,6 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD-02</title>
+    <style>
+        .edit {
+            margin-left: 700px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,35 +23,19 @@
     {{--old('email')--}}
     {{--old('password')--}}
     {{--old('description')--}}
-    @if(session('sucess'))
-    <p style="color: #086">
-        {{ session('sucess' )}}
-    </p>
-    @endif
-    @if( session('error') )
-    <p style="color: rgb(221, 28, 17)">
-        {{ session('error') }}
-    </p>
-    @endif
-    {{--usando a validação de campos com o Request --}}
-    @if($errors->any())
-    @foreach($errors->all() as $error)
-    <p style="color: rgb(221, 28, 17)">
-        {{ $error }} </p>
-    @endforeach
-    @endif
-    <ul>
-        <a style="margin-left:550px" href="{{ route('create.user') }}">_home_</a>
-    </ul>
-    {{-- {{ dd($user) }} --}}
+    <div class="edit">
+        <a style="margin-right" href="{{ route('welcome') }}">_home_</a>
+        <a href="{{ route('create.user') }}">_cadastrar_</a>
+    </div>
+    {{-- {{ dd($users) }} --}}
     <table>
         <thead>
             <tr>
-                <th style="padding: 12px 20px">ID</th>
-                <th style="padding: 12px 20px">Nome</th>
-                <th style="padding: 12px 20px">E-mail</th>
-                <th style="padding: 12px 20px">Descrição</th>
-                <th style="padding: 12px 20px">Acções</th>
+                <th style="padding: 12px 40px">ID</th>
+                <th style="padding: 14px 40px">Nome</th>
+                <th style="padding: 14px 40px">E-mail</th>
+                <th style="padding: 14px 40px">Descrição</th>
+                <th style="padding: 14px 40px">Acções</th>
             </tr>
         </thead>
         <tbody>

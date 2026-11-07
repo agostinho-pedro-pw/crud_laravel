@@ -15,6 +15,10 @@ class UserController extends Controller
     {
     return dd('Formulairo');
     } */
+    public function welcome()
+    {
+        return view('welcome');
+    }
     public function create()
     {
         return view('users.create');
@@ -38,6 +42,7 @@ class UserController extends Controller
         }
     }
     /*Listar os usuários*/
+    /*C.R-listar.U-editar.D-apagar*/
     public function index()
     {
         //recuperar os registros do banco de dados
