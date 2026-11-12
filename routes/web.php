@@ -17,6 +17,6 @@ Route::get('/create-user', [UserController::class, 'create'])->name('create.user
 Route::post('/store-user', [UserController::class, 'store'])->name('store.user');
 
 
-/*-----.Rotas para a edição de um registro----*/
+/*-----Rotas para a edição de um registro----*/
 Route::get('/edit-user/{user}', [UserController::class, 'edit'])->name('edit.user');
 Route::put('/update-user/{user}', [UserController::class, 'update'])->name('update.user');

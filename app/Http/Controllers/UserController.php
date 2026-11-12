@@ -52,7 +52,6 @@ class UserController extends Controller
     // Carregar o formulário editar usuário
     public function edit(User $user)
     {
-
         //carregar a view
         return view('users.edit', ['user' => $user]);
     }
@@ -60,14 +59,16 @@ class UserController extends Controller
     {
         try {
             //Editar as informações do registro no banco de dados
-            $user->update([
+            $user->update($request->all());
+            /*$user->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'description' => $request->desccription,
-            ]);
+            ]);*/
             return redirect()->route('edit.user', ['user' => $user->id])->with('msg', 'Usuário editado com sucesso!');
         } catch (Exception $e) {
             //rediciona no caso de erro
+            // dd($e->getMessage());
             return back()->withInput()->with('error', 'usuario não editado!');
         }
     }

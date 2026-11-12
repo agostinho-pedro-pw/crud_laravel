@@ -18,9 +18,9 @@
     {{--old('email')--}}
     {{--old('password')--}}
     {{--old('description')--}}
-    @if(session('sucess'))
+    @if(session('msg'))
     <p style="color: #086">
-        {{ session('sucess' )}}
+        {{ session('msg' )}}
     </p>
     @endif
     @if( session('error') )
@@ -35,11 +35,11 @@
         {{ $error }} </p>
     @endforeach
     @endif
-    {{--{{ dd($user) }}--}}
+    {{-- {{ dd($user) }} --}}
     <ul>
-        <a href="{{ route('index.user',['user'=> $user->id]) }}">_listar_</a>
+        <a href="{{ route('index.user') }}">_listar_</a>
     </ul><br>
-    <form action="{{ route('update.user') }}" method="POST">
+    <form action="{{ route('update.user',['user'=> $user->id]) }}" method="POST">
         @csrf {{--token de segurança, para evitar dados indesejados no nosso codigo--}}
         @method('PUT')
         <label for="name">Nome: </label>
@@ -54,7 +54,7 @@
         <label for="textarea">Descrição: </label>
 
         <input type="textarea" name="description" id="description " placeholder="Insira uma descrição"
-            value="{{ old('description',$user->description) }}"><br><br>
+            value="{{ old('description', $user->description) }}"><br><br>
 
         <button type="submit">Salvar</button>
 
