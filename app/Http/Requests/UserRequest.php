@@ -22,11 +22,13 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user = $this->route('user');
         return [
             //definindo os campos required
+            //required_if:password,!=,null se existir o campo palavra-passe, verifique se pode ser validado..
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:2',
+            'email' => 'required|email|unique:users,email,' . ($user ? $user->id : null),
+            'password' => 'required_if:password,!=,null|min:2',
             'description' => 'required|min:2|max:1000',
         ];
     }
@@ -36,10 +38,10 @@ class UserRequest extends FormRequest
         return [
             //definindo os campos obrigatorios e as mensagens de erro!
             'name.required' => 'O campo nome é obrigatório',
-            'email.required' => 'Este campo é necessário',
+            'email.required' => 'O campo email é obrigatório',
             'email.email' => 'Este campo deve conter um email valido',
             'email.unique' => 'já foi regristado um user com esse email',
-            'password.required' => ' Este campo é obrigatorio',
+            'password.required_if' => ' Este a password é obrigatorio',
             'password.min' => 'Este campo deve conter no minimo :min caracteres',
             'description.required' => ' Este campo é obrigatório',
             'description.min' => 'Este campo deve conter no minimo :min caracteres',

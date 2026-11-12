@@ -49,4 +49,26 @@ class UserController extends Controller
         $users = User::orderByDesc('id')->paginate(20);
         return view('users.index', ['users' => $users]);
     }
+    // Carregar o formulário editar usuário
+    public function edit(User $user)
+    {
+
+        //carregar a view
+        return view('users.edit', ['user' => $user]);
+    }
+    public function update(UserRequest $request, User $user)
+    {
+        try {
+            //Editar as informações do registro no banco de dados
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'description' => $request->desccription,
+            ]);
+            return redirect()->route('edit.user', ['user' => $user->id])->with('msg', 'Usuário editado com sucesso!');
+        } catch (Exception $e) {
+            //rediciona no caso de erro
+            return back()->withInput()->with('error', 'usuario não editado!');
+        }
+    }
 }

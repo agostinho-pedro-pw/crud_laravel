@@ -47,7 +47,7 @@
                 <td>{{ $user->description }}</td>
                 <td>
                     <a href="#">Visualizar</a>
-                    <a href="#">Editar</a>
+                    <a href="{{ route('edit.user',['user'=> $user->id ]) }}">Editar</a>
                     <a href="#">Apagar</a>
                 </td>
             </tr>

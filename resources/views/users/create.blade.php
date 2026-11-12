@@ -20,7 +20,7 @@
     {{--old('description')--}}
     @if(session('sucess'))
     <p style="color: #086">
-        {{ session('sucess' )}}
+        {{ session('sucess') }}
     </p>
     @endif
     @if( session('error') )
@@ -38,8 +38,9 @@
     <ul>
         <a href="{{ route('index.user') }}">_listar_</a>
     </ul><br>
+
     <form action="{{ route('store.user') }}" method="POST">
-        @csrf {{--token de segurança, para evitar dados indesejados no nosso codigo--}}
+        @csrf {{--token de segurança, para evitar o acesso indesejado no nosso sitema--}}
         <label for="name">Nome: </label>
         <input type="text" name="name" id="name" placeholder="digite o seu nome completo"
             value="{{ old('name') }}"><br><br>
