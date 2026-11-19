@@ -12,7 +12,7 @@
     <h1>Cadastrar o usuario:</h1><br>
     {{--session('sucess')--}}
     {{--session('error')--}}
-    {{--$errors->any()q--}}
+    {{--$errors->any()--}}
     {{--$errors->all()--}}
     {{--old('name')--}}
     {{--old('email')--}}

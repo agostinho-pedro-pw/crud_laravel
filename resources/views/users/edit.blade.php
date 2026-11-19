@@ -18,15 +18,18 @@
     {{--old('email')--}}
     {{--old('password')--}}
     {{--old('description')--}}
+
     @if(session('msg'))
     <p style="color: #086">
         {{ session('msg' )}}
     </p>
     @endif
+
     @if( session('error') )
     <p style="color: rgb(221, 28, 17)">
         {{ session('error') }}
     </p>
+
     @endif
     {{--usando a validação de campos com o Request --}}
     @if($errors->any())
@@ -35,13 +38,15 @@
         {{ $error }} </p>
     @endforeach
     @endif
-    {{-- {{ dd($user) }} --}}
+    <!--We use dd to see the result the we find-->
+    {{--{{ dd($user) }}--}}
     <ul>
         <a href="{{ route('index.user') }}">_listar_</a>
     </ul><br>
+
     <form action="{{ route('update.user',['user'=> $user->id]) }}" method="POST">
         @csrf {{--token de segurança, para evitar dados indesejados no nosso codigo--}}
-        @method('PUT')
+        @method('PUT'){{--Usado para actulizar um campo--}}
         <label for="name">Nome: </label>
         <input type="text" name="name" id="name" placeholder="digite o seu nome completo"
             value="{{ old('name', $user->name) }}"><br><br>

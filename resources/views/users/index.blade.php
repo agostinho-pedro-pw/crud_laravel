@@ -52,7 +52,7 @@
                 </td>
             </tr>
             @empty
-            <p style="color:#086">
+            <p style="color:rgb(255, 5, 5)">
                 Não foi encontrado nenhum regristro!</p>
             @endforelse
         </tbody>
